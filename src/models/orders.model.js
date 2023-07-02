@@ -6,10 +6,9 @@ async function getAllOrders(){
     return await Order.find({})
 }
 
-// Add New Product
+// Add New Order
 async function addNewOrder(orderDetails){
-    
-    const ordersLength = await getAllOrders();
+    const ordersLength = await getAllOrders(); 
     orderDetails.orderNumber = 100 + ordersLength.length + 1;
     const addedOrder = await new Order(orderDetails).save();
     return addedOrder;

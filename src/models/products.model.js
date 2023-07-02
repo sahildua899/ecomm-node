@@ -1,17 +1,21 @@
 const Product = require('./products.mongo');
 
-// Finding One Product
 
-async function findById(data) {
-   const foundProduct =  await Product.findOne({id:data.id})
-   return foundProduct
-}
 
 // Finding All Products
 async function findProducts() {
     return await Product.find({})
+    
 }
 
+
+// Finding One Product
+
+async function findProductById(data) {
+    const oneProduct = await Product.findOne({id:data.id})
+    
+    return oneProduct
+}
 // Add New Product
 async function createNewProduct(productData) {
     const newproductData = JSON.parse(productData);
@@ -45,5 +49,6 @@ module.exports = {
     findProducts,
     createNewProduct,
     updateExistingProduct,
-    deleteProduct
+    deleteProduct,
+    findProductById
 }   

@@ -3,8 +3,8 @@ const {httpGetAllOrders, httpAddNewOrder, httpFindOrder, httpFindOrdersbyEmail, 
 
 const ordersRouter = express.Router();
 
-ordersRouter.get('/', httpGetAllOrders);
-ordersRouter.post('/', httpAddNewOrder);
+ordersRouter.post('/', httpGetAllOrders);
+ordersRouter.post('/addNew', httpAddNewOrder);
 ordersRouter.post('/:id', httpFindOrder);
 ordersRouter.post('/find/:email', httpFindOrdersbyEmail);
 ordersRouter.delete('/:id', httpDeleteOrder);

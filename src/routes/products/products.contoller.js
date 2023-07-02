@@ -1,10 +1,18 @@
-const {findProducts, createNewProduct, updateExistingProduct,deleteProduct} = require('../../models/products.model');
-    
+const {findProducts, createNewProduct, updateExistingProduct,deleteProduct, findProductById } = require('../../models/products.model');
+
+// Finding Products
 async function httpFindProducts(req,res) {
     const products = await findProducts();
-    return res.status(200).send('Checking')
+    return res.status(200).send(products)
 }
 
+async function httpFindProductById(req,res) {
+    const product = await findProductById(req.body);
+    res.status(200).send(JSON.stringify(product))
+}
+
+
+// Adding New Product
 async function httpAddNewProduct(req,res) {
     const productData = req.body;
     
@@ -32,7 +40,7 @@ async function httpUpdateProduct(req, res){
     }
 }
 
-// Delete Price
+// Delete Product
 async function httpDeleteProduct(req,res){
     const ProductId = req.body;
     const deletedProduct = await deleteProduct(ProductId);
@@ -50,5 +58,6 @@ module.exports = {
     httpFindProducts,
     httpAddNewProduct,
     httpUpdateProduct,
-    httpDeleteProduct
+    httpDeleteProduct,
+    httpFindProductById
 }

@@ -19,7 +19,7 @@ async function httpAddNewOrder(req,res){
             message:'Order Not Done Correctly'
         })
     }
-    res.status(200).json({
+    res.status(201).json({
         message:'Order Placed Success'
     })
 }

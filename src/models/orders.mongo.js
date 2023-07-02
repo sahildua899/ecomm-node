@@ -1,5 +1,32 @@
 const mongoose = require('mongoose');
 
+// const newOrderSchema = new mongoose.Schema({
+//     amount:{
+//         type:Number
+//     },
+//     orderNumber:{
+//         type:Number,
+//         unique:true
+//     },
+//     products:[{
+//         brand:{
+//             type:String
+//         },
+//         count:{
+//             type:Number
+//         },
+//         id:{
+//             type:Number
+//         },
+//         price:{
+//             type:Number
+//         },
+//         size:{
+//             type:Number
+//         }
+//     }]
+// })
+
 const OrderSchema = new mongoose.Schema({
     orderNumber:{
         type:Number,
@@ -15,40 +42,32 @@ const OrderSchema = new mongoose.Schema({
     },
     products:[
         {
-        brand:{
-            type:String,
-        },
-        id:{
-            type:Number,
-        },
-        isAccessory:{
-            type:String,
-        },
-        name:{
-            type:String
-        },
-        preview:{
-            type:String
-        },
-        price:{
-            type:Number
-        },
-        count:{
-            type:Number
-        }
+            brand:{
+                type:String
+            },
+            count:{
+                type:Number
+            },
+            id:{
+                type:Number
+            },
+            price:{
+                type:Number
+            }
         }
     ],
-    billing:[{
+    billingDetails:{
                 firstname:String,
                 lastname:String,
-                phone:Number,
-                address:String,
-                nearby:String,
-                city:String,
+                company:String,
                 country:String,
+                houseAdd:String,
+                apartment:String,
+                city:String,
                 state:String,
-                pincode:Number
-    }]
+                zipcode:String,
+                phone:String
+    }
 })
 
 const Order = new mongoose.model("Order", OrderSchema);

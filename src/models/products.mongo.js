@@ -17,8 +17,11 @@ const productsSchema = new mongoose.Schema({
     description:{
         type:String
     },
+    size:{
+        type:Array
+    },
     isAccessory : {
-        type:String
+        type:Boolean
     },
     brand:{
         type:String

@@ -1,27 +1,32 @@
 const Users = require('./users.mongo');
 const bcrypt = require('bcryptjs');
 
+// Finding One User with Email
 async function findingUser(loginData){
     const dbuser = await Users.findOne({email:loginData.email});
-    console.log(dbuser)
     return dbuser
 }
 
+// Getting All Users
 async function getAllUsers(){
     return await Users.find({})
 }
 
+// Adding New User
 async function addNewUser(userData){
     const newUser = await new Users(JSON.parse(userData)).save();
     return newUser
 }
 
+// Finding User
 async function findLoginUser(loginData) {
    const foundUser = await findingUser(loginData)
+   if(!foundUser) return false
     const isMatch = await bcrypt.compare(loginData.password, foundUser.password)
     return isMatch
 }
 
+// Updating User Pass
 async function updateUserPass(newPassData) {
     const useremail = newPassData.email;
     let userpassword = newPassData.password;
@@ -30,6 +35,7 @@ async function updateUserPass(newPassData) {
    return updatedPassword;
 }
 
+// Deleting User
 async function deleteUserData(userDatatoDelete) {
     const deletedData = await Users.deleteOne({email:userDatatoDelete.email});
     return deletedData

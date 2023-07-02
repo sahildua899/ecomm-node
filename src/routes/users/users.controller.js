@@ -3,7 +3,7 @@ const {getAllUsers, addNewUser, findLoginUser, updateUserPass, deleteUserData} =
 // Find All Users
 async function httpFindAllUsers(req,res){
     const users = await getAllUsers();
-    return res.status(200).send('Fetching Users')
+    return res.status(200).send(users)
 }
 
 // Add New User

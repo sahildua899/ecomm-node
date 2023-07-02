@@ -1,10 +1,11 @@
 const express = require('express');
-const {httpFindProducts, httpAddNewProduct, httpUpdateProduct,httpDeleteProduct} = require('./products.contoller')
+const {httpFindProducts, httpAddNewProduct, httpUpdateProduct,httpDeleteProduct, httpFindProductById} = require('./products.contoller')
 
 const productsRouter = express.Router();
 
-productsRouter.get('/', httpFindProducts);
-productsRouter.post('/', httpAddNewProduct);
+productsRouter.post('/', httpFindProducts);
+productsRouter.post('/addNew', httpAddNewProduct);
+productsRouter.post('/:id', httpFindProductById)
 productsRouter.put('/', httpUpdateProduct);
 productsRouter.delete('/', httpDeleteProduct);
 
